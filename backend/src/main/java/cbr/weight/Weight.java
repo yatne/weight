@@ -1,4 +1,4 @@
-package cbr.model;
+package cbr.weight;
 
 import java.util.Date;
 
