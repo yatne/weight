@@ -8,10 +8,13 @@ public class Weight {
     private Date date;
     private float weight;
 
-    public Weight(int id, float weight, Date date) {
+    public Weight(int id, Date date, float weight) {
         this.id = id;
-        this.weight = weight;
         this.date = date;
+        this.weight = weight;
+    }
+
+    public Weight() {
     }
 
     public int getId() {
