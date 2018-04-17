@@ -1,14 +1,19 @@
 package cbr.weight;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.Date;
 
+@Entity
 public class Weight {
 
+    @Id
     private int id;
-    private Date date;
     private float weight;
+    private LocalDate date;
 
-    public Weight(int id, Date date, float weight) {
+    public Weight(int id, LocalDate date, float weight) {
         this.id = id;
         this.date = date;
         this.weight = weight;
@@ -25,11 +30,11 @@ public class Weight {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

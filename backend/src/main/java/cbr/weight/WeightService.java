@@ -2,6 +2,7 @@ package cbr.weight;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,9 +13,9 @@ public class WeightService {
 
     public WeightService() {
         List<Weight> weights = new ArrayList<>();
-        weights.add(new Weight(1, new Date(),80 ));
-        weights.add(new Weight(2, new Date(),81));
-        weights.add(new Weight(4,  new Date(),83));
+        weights.add(new Weight(1, LocalDate.now(),80 ));
+        weights.add(new Weight(2, LocalDate.now(),81));
+        weights.add(new Weight(4, LocalDate.now(),83));
         this.weights = weights;
     }
 
