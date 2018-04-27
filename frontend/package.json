@@ -1,8 +1,6 @@
 {
-  "name": "react-webpack-babel",
-  "version": "0.0.4",
-  "description": "React Webpack Babel Starter Kit",
-  "main": "''",
+  "name": "weight",
+  "version": "1.0.0-SNAPSHOT",
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
     "serve:build": "npm run build && node server.js",
@@ -10,12 +8,6 @@
     "lint": "eslint --ext js --ext jsx src || exit 0",
     "dev": " webpack-dashboard -- webpack-dev-server"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ReactJSResources/react-webpack-babel"
-  },
-  "author": "ReactJSResources",
-  "license": "MIT",
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "normalize.css": "^7.0.0",
