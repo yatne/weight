@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class WeightController {
 
     @Autowired
     private WeightService weightService;
 
-    @CrossOrigin
     @RequestMapping("/weights")
     public List<Weight> getAllWeights() {
         return weightService.getAllWeights();

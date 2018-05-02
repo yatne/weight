@@ -1,19 +1,16 @@
-var webpack = require('webpack');
-var path = require('path');
-var loaders = require('./webpack.loaders');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+"use strict";
 
-loaders.push({
-  test: /\.scss$/,
-  loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader?outputStyle=expanded'}),
-  exclude: ['node_modules']
-});
+const webpack = require('webpack');
+const path = require('path');
+const loadersConf = require('./webpack.loaders');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
-    './src/index.jsx'
+    './src/index.jsx',
+    './src/styles/main.scss',
   ],
   output: {
     publicPath: './',
@@ -27,7 +24,7 @@ module.exports = {
     }
   },
   module: {
-    loaders
+    rules: loadersConf
   },
   plugins: [
     new WebpackCleanupPlugin(),
