@@ -1,20 +1,21 @@
 package cbr.weight;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "weights")
-public class Weight {
+public class Weight implements Serializable {
 
     @Id
     @SequenceGenerator(name="weight_seq", sequenceName="weight_id_seq", allocationSize = 1)
     @GeneratedValue(generator="weight_seq")
-    private int id;
-    private float weight;
+    private Integer id;
+    private Float weight;
     private LocalDate date;
 
-    public Weight(int id, LocalDate date, float weight) {
+    public Weight(Integer id, LocalDate date, Float weight) {
         this.id = id;
         this.date = date;
         this.weight = weight;
@@ -23,11 +24,11 @@ public class Weight {
     public Weight() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -39,11 +40,11 @@ public class Weight {
         this.date = date;
     }
 
-    public float getWeight() {
+    public Float getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(Float weight) {
         this.weight = weight;
     }
 

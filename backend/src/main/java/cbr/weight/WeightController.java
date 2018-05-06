@@ -18,7 +18,7 @@ public class WeightController {
     }
 
     @RequestMapping("/weights/{id}")
-    public  Weight getWeightById(@PathVariable int id) {
+    public  Weight getWeightById(@PathVariable Integer id) {
         return weightService.getWeightById(id);
     }
 
