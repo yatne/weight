@@ -3,6 +3,7 @@ package cbr.weight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,8 +13,12 @@ public class WeightService {
     @Autowired
     private WeightRepository weightRepository;
 
-    public List<Weight> getAllWeights() {
-        return weightRepository.findAll();
+    public List<Weight> getWieghtsBetweenDates(LocalDate dateFrom, LocalDate dateTo) {
+        if (dateFrom != null && dateTo != null) {
+            return weightRepository.findWeightsBetweenDates(dateFrom, dateTo);
+        } else {
+            return weightRepository.findAll();
+        }
     }
 
     public Weight getWeightById(Integer id) {
