@@ -1,3 +1,16 @@
-body {
-  background-color: green;
+.main-dashboard {
+  display: flex;
+  justify-content: space-between;
+
+  > .weight-management-panel {
+    flex: 2;
+    height: 3000px;
+    background-color: teal;
+  }
+
+  > .default-charts-panel {
+    flex: 1;
+    height: 900px;
+    background-color: lightpink;
+  }
 }

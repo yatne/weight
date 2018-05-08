@@ -6,7 +6,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className='weight-management-panel'>
+      <div className='header'>
         HEADER
       </div>
     );

@@ -6,7 +6,7 @@ class DefaultChartsPanel extends React.Component {
 
   render() {
     return (
-      <div className='weight-management-panel'>
+      <div className='default-charts-panel'>
         CHARTS
       </div>
     );
