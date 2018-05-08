@@ -4,15 +4,15 @@ import {
   Route
 } from 'react-router-dom';
 import App from './app';
-import About from './components/About';
-import Sample from './components/Sample';
+import MainDashboardScreen from './components/MainDashboard/MainDashboardScreen';
+import ReportDashboard from './components/ReportDashboard/ReportDashboard';
 
 const Routes = () => (
   <Router>
     <div>
       <Route exact path="/" component={App}/>
-      <Route path="/about" component={About}/>
-      <Route path="/sample" component={Sample}/>
+      <Route path="/main" component={MainDashboardScreen}/>
+      <Route path="/report" component={ReportDashboard}/>
     </div>
   </Router>
 );
