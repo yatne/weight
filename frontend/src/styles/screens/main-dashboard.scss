@@ -5,12 +5,12 @@
   > .weight-management-panel {
     flex: 2;
     height: 3000px;
-    background-color: teal;
+    background-color: $backgroundColor;
   }
 
   > .default-charts-panel {
     flex: 1;
     height: 900px;
-    background-color: lightpink;
+    background-color: $backgroundColor;
   }
 }
