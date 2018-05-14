@@ -15,6 +15,9 @@ class MainDashboardScreen extends React.Component {
   }
 
   componentDidMount() {
+    fetch('http://pi:8080/weights')
+      .then(res => res.json())
+      .then(res => this.setState({ weights: res }));
   }
 
   render() {
