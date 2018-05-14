@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
 @import './common/variables.scss';
-@import './screens/main-dashboard.scss';
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
 
 body {
   background-color: $backgroundColor;
@@ -11,16 +16,6 @@ body {
   display: flex;
   justify-content: center;
 
-  > .header {
-    position: fixed;
-    width: 100%;
-    height: 50px;
-    background-color: lightblue;
-    padding: 0 32px;
-    margin: 0;
-    top: 0;
-  }
-
   > .central-layout {
     display: flex;
     align-items: center;
@@ -30,3 +25,7 @@ body {
     width: 100%;
   }
 }
+
+
+@import './screens/main-dashboard.scss';
+@import './header.scss';
