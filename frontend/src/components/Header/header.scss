@@ -1,11 +1,13 @@
+//@import "../../styles/common/variables";
+
 .header {
   position: fixed;
   width: 100%;
   height: 50px;
-  background-color: $componentBackgroundColor;
+  background-color: white;
   padding: 0 32px;
   margin: 0;
   top: 0;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px green;
 }

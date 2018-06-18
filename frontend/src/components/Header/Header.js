@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import style from './header.scss';
+
 const Header = () => (
-  <div className="header">
+  <header className={style.header}>
     <div className="header-title">
       GRUBOŚĆ
     </div>
@@ -16,7 +18,7 @@ const Header = () => (
         </li>
       </ul>
     </div>
-  </div>
+  </header>
 );
 
 export default Header;

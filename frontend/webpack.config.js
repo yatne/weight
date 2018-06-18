@@ -1,4 +1,5 @@
-"use strict";
+
+
 const webpack = require('webpack');
 const path = require('path');
 const loadersConf = require('./webpack.loaders');
@@ -6,8 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const HOST = process.env.HOST || "127.0.0.1";
-const PORT = process.env.PORT || "8888";
+const HOST = process.env.HOST || '127.0.0.1';
+const PORT = process.env.PORT || '8888';
 
 
 module.exports = {
@@ -26,33 +27,29 @@ module.exports = {
   output: {
     publicPath: '/',
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
-    rules: loadersConf
+    rules: loadersConf,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     modules: [
-      path.join(__dirname, "src"),
-      path.join(__dirname, "node_modules"), // the old 'fallback' option (needed for npm link-ed packages)
+      path.join(__dirname, 'src'),
+      path.join(__dirname, 'node_modules'), // the old 'fallback' option (needed for npm link-ed packages)
     ],
     alias: {
-      "styles": path.resolve(__dirname, 'styles/'),
-    }
+      styles: path.resolve(__dirname, 'styles/'),
+    },
   },
   devServer: {
-    contentBase: "./public",
-    // do not print bundle build stats
+    contentBase: './public',
     noInfo: true,
-    // enable HMR
     hot: true,
-    // embed the webpack-dev-server runtime into the bundle
     inline: true,
-    // serve index.html in place of 404 responses to allow HTML5 history
     historyApiFallback: true,
     port: PORT,
-    host: HOST
+    host: HOST,
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
@@ -60,15 +57,15 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin({
       filename: 'style.css',
-      allChunks: true
+      allChunks: true,
     }),
     new DashboardPlugin(),
     new HtmlWebpackPlugin({
       template: './src/template.html',
       files: {
         css: ['style.css'],
-        js: [ "bundle.js"],
-      }
+        js: ['bundle.js'],
+      },
     }),
-  ]
+  ],
 };

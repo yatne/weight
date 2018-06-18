@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
 @import './common/variables.scss';
 
-html {
-  font-family: 'Open Sans', sans-serif;
+* {
   box-sizing: border-box;
 }
 
+html {
+  font-family: 'Open Sans', sans-serif;
+  color: $textDark;
+}
+
 body {
-  background-color: $backgroundColor;
+  background-color: $backgroundWhite;
   margin: 0
 }
 
@@ -21,11 +25,10 @@ body {
     align-items: center;
     justify-content: space-between;
     max-width: 1800px;
-    background-color: $backgroundColor;
+    background-color: $backgroundWhite;
     width: 100%;
   }
 }
 
 
 @import './screens/main-dashboard.scss';
-@import './header.scss';
