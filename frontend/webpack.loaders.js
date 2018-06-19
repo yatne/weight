@@ -130,24 +130,55 @@ module.exports = [
   // Do not modularize these imports
   // (leave them as global css styles)
   {
-    test: /\.(css|sass|scss)$/,
-    include: path.resolve(__dirname, 'src/styles'),
-    use: ExtractTextPlugin.extract({
-      use: ['css-loader', 'sass-loader'],
-    }),
+    exclude: [
+      /\.html$/,
+      /\.(js|jsx)$/,
+      /\.css$/,
+      /\.json$/,
+      /\.bmp$/,
+      /\.gif$/,
+      /\.jpe?g$/,
+      /\.png$/,
+      /\.scss$/,
+    ],
+    loader: require.resolve('file-loader'),
+    options: {
+      name: 'static/media/[name].[hash:8].[ext]',
+    },
   },
-
-  {
-    test: /\.(css|sass|scss)$/,
-    include: path.resolve(__dirname, 'src/components'),
-    use: ExtractTextPlugin.extract({
-      use: ['css-loader', 'sass-loader'],
-    }),
-  },
-
   {
     test: /\.css$/,
-    loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            localIdentName: '[name]__[local]___[hash:base64:5]',
+          },
+        },
+        'postcss-loader',
+      ],
+    }),
   },
-
+  {
+    test: /\.scss$/,
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            sourceMap: true,
+            importLoaders: 2,
+            localIdentName: '[name]__[local]___[hash:base64:5]',
+          },
+        },
+        'sass-loader',
+      ],
+    }),
+  },
 ];
+

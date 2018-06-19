@@ -1,5 +1,3 @@
-
-
 const webpack = require('webpack');
 const path = require('path');
 const loadersConf = require('./webpack.loaders');
@@ -9,7 +7,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const HOST = process.env.HOST || '127.0.0.1';
 const PORT = process.env.PORT || '8888';
-
 
 module.exports = {
   entry: [
@@ -58,6 +55,7 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true,
+      disable: process.env.NODE_ENV !== 'production',
     }),
     new DashboardPlugin(),
     new HtmlWebpackPlugin({
