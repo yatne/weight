@@ -17,7 +17,7 @@ module.exports = {
     'core-js/es6/object',
     'core-js/es6/array',
 
-    './src/index.jsx',
+    './src/index.js',
     './src/styles/main.scss',
   ],
   devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
