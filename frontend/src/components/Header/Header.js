@@ -5,18 +5,20 @@ import style from './header.scss';
 
 const Header = () => (
   <header className={style.header}>
-    <div className="header-title">
-      GRUBOŚĆ
-    </div>
-    <div className="header-menu">
-      <ul>
-        <li>
-          <Link to="/main">Main</Link>
-        </li>
-        <li>
-          <Link to="/report">Report</Link>
-        </li>
-      </ul>
+    <div className={style.headerContent}>
+      <div className={style.headerTitle}>
+        GRUBOŚĆ
+      </div>
+      <div className="header-menu">
+        <ul className={style.menu}>
+          <li className={style.menuItem}>
+            <Link className={style.menuLink} to="/main">Main</Link>
+          </li>
+          <li className={style.menuItem}>
+            <Link className={style.menuLink} to="/report">Report</Link>
+          </li>
+        </ul>
+      </div>
     </div>
   </header>
 );
