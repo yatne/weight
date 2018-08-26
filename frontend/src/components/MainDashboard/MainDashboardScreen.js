@@ -1,6 +1,6 @@
 import React from 'react';
-import fetch from 'isomorphic-fetch';
 
+import { fetchWeights } from '../../modules/api/weightApi';
 import Header from '../Header/Header';
 import MainDashboard from './MainDashboard';
 
@@ -13,9 +13,8 @@ class MainDashboardScreen extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://192.168.0.21:8080/weights')
-      .then(res => res.json())
-      .then(res => this.setState({ weights: res }));
+    fetchWeights('lorem', 'ipsum')
+      .then(weights => this.setState({ weights }));
   }
 
   render() {
