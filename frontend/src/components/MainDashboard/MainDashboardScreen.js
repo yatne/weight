@@ -13,7 +13,7 @@ class MainDashboardScreen extends React.Component {
   }
 
   componentDidMount() {
-    fetchWeights('lorem', 'ipsum')
+    fetchWeights(new Date('2017-06-17'), new Date('2017-06-20'))
       .then(weights => this.setState({ weights }));
   }
 
