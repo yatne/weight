@@ -2,6 +2,7 @@ import React from 'react';
 
 import WeightManagementPanel from './WeightManagementPanel';
 import DefaultChartsPanel from './DefaultChartsPanel';
+import DateInput from '../common/DateInput';
 import { fetchWeights } from '../../modules/api/weightApi';
 
 class MainDashboard extends React.Component {
@@ -23,6 +24,7 @@ class MainDashboard extends React.Component {
         {!!this.state.weights && this.state.weights.map(weight => (<div>{weight.weight}</div>))}
         <WeightManagementPanel />
         <DefaultChartsPanel />
+        <DateInput />
       </div>
     );
   }

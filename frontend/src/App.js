@@ -6,13 +6,17 @@ import {
 
 import ReportDashboard from './components/ReportDashboard/ReportDashboard';
 import MainDashboard from './components/MainDashboard/MainDashboard';
-import withCentralLayout from './components/Screen/withCentralLayout';
+import CentralLayoutScreen from './components/Screen/CentralLayoutScreen';
+
+const Screen = () => (
+  <CentralLayoutScreen><MainDashboard /></CentralLayoutScreen>
+);
 
 const Routes = () => (
   <Router>
     <div>
       <Route exact path="/report" component={ReportDashboard} />
-      <Route exact path="/" component={withCentralLayout(MainDashboard)} />
+      <Route exact path="/" component={Screen} />
     </div>
   </Router>
 );
