@@ -14,7 +14,7 @@ const DateInput = (props) => {
         {label || name}
       </div>
       <input
-        type="text"
+        type="date"
         name={name}
         value={value}
         onChange={event => onChange(event.target.value)}

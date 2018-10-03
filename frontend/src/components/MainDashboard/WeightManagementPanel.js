@@ -11,7 +11,6 @@ class WeightManagementPanel extends React.Component {
   }
 
   handleFromChange(value) {
-    console.log(value);
     this.setState({
       fromDate: value,
     });
@@ -26,8 +25,8 @@ class WeightManagementPanel extends React.Component {
   render() {
     return (
       <div className="weight-management-panel">
-        <DateInput name="from" value={this.state.fromDate} onChange={this.handleFromChange} />
-        <DateInput name="to" value={this.state.toDate} onChange={this.handleToChange} />
+        <DateInput name="from" value={this.state.fromDate} onChange={value => this.handleFromChange(value)} />
+        <DateInput name="to" value={this.state.toDate} onChange={value => this.handleToChange(value)} />
         {`${this.state.fromDate}
 ${this.state.toDate}`}
       </div>
