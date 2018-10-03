@@ -12,16 +12,16 @@ class MainDashboard extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetchWeights(new Date('2017-06-17'), new Date('2017-06-20'))
+  getWeightsForDates(from, to) {
+    fetchWeights(new Date(from), new Date(to))
       .then(weights => this.setState({ weights }));
   }
 
   render() {
     return (
       <div>
+        <WeightManagementPanel onSubmit={(from, to) => this.getWeightsForDates(from, to)} />
         {!!this.state.weights && this.state.weights.map(weight => (<div>{weight.weight}</div>))}
-        <WeightManagementPanel />
         <DefaultChartsPanel />
       </div>
     );
