@@ -2,6 +2,7 @@ package cbr.weight;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -31,7 +32,13 @@ public class WeightService {
         return weightOptional.get();
     }
 
-    public void addNewWeight(Weight weight) {
-        weightRepository.save(weight);
+    @Transactional
+    public void addOrReplaceWeight(Weight weight) {
+        Weight existingWeight =  weightRepository.findByDate(weight.getDate());
+        if (existingWeight != null) {
+            weightRepository.updateWeightByDate(weight.getDate(), weight.getWeight());
+        } else {
+            weightRepository.save(weight);
+        }
     }
 }

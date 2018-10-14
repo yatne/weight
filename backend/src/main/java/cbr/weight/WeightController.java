@@ -16,10 +16,10 @@ public class WeightController {
 
     @RequestMapping("/weights")
     public List<Weight> getWeightsBetweenDates(
-        @RequestParam(value="dateFrom", required=false)
+        @RequestParam(value = "dateFrom", required = false)
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate dateFrom,
-        @RequestParam(value="dateTo", required=false)
+        @RequestParam(value = "dateTo", required = false)
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate dateTo
     ) {
@@ -27,12 +27,12 @@ public class WeightController {
     }
 
     @RequestMapping("/weights/{id}")
-    public  Weight getWeightById(@PathVariable Integer id) {
+    public Weight getWeightById(@PathVariable Integer id) {
         return weightService.getWeightById(id);
     }
 
-    @RequestMapping(method=RequestMethod.POST, value="/weights")
-    public void andWeight(@RequestBody Weight weight) {
-        weightService.addNewWeight(weight);
+    @RequestMapping(method = RequestMethod.POST, value = "/weights")
+    public void addOrReplaceWeight(@RequestBody Weight weight) {
+        weightService.addOrReplaceWeight(weight);
     }
 }
