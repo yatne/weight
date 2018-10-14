@@ -17,8 +17,13 @@ public class WeightService {
         if (dateFrom != null && dateTo != null) {
             return weightRepository.findWeightsBetweenDates(dateFrom, dateTo);
         } else {
-            return weightRepository.findAll();
+            return getWeightsFromThisMonth();
         }
+    }
+
+    private List<Weight> getWeightsFromThisMonth() {
+        LocalDate firstOfMonth = LocalDate.now().withDayOfMonth(1);
+        return weightRepository.findWeightsBetweenDates(firstOfMonth, LocalDate.now());
     }
 
     public Weight getWeightById(Integer id) {
