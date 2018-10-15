@@ -1,6 +1,7 @@
 import React from 'react';
 
 import DefaultChartsPanel from './DefaultChartsPanel';
+import AddNewWeightSection from './AddNewWeightSection';
 import { fetchThisMonthsWeights } from '../../modules/api/weightApi';
 
 class MainDashboard extends React.Component {
@@ -23,6 +24,7 @@ class MainDashboard extends React.Component {
   render() {
     return (
       <div>
+        <AddNewWeightSection />
         {this.state.weights.map(weight => (<div>{weight.weight}</div>))}
         <DefaultChartsPanel />
       </div>
