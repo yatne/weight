@@ -9,7 +9,7 @@ const Header = () => (
       <div className={style.headerTitle}>
         GRUBOŚĆ
       </div>
-      <div className="header-menu">
+      <div>
         <ul className={style.menu}>
           <li className={style.menuItem}>
             <Link className={style.menuLink} to="/main">Main</Link>

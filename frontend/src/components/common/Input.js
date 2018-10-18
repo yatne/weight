@@ -1,37 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DateInput = (props) => {
+const Input = (props) => {
   const {
     onChange,
     value,
     name,
     label,
+    type,
   } = props;
   return (
-    <div className="dateInputContainer">
-      <div className="dateInputLabel">
+    <div className="inputContainer">
+      <div className="inputLabel">
         {label || name}
       </div>
       <input
-        type="date"
+        type={type}
         name={name}
         value={value}
         onChange={event => onChange(event.target.value)}
+        className="input"
       />
     </div>
   );
 };
 
-DateInput.propTypes = {
+
+Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
+  type: PropTypes.string,
 };
 
-DateInput.defaultProps = {
+Input.defaultProps = {
   label: null,
+  type: null,
 };
 
-export default DateInput;
+export const DateInput = props => (<Input type="date" {...props} />);
+export const NumInput = props => (<Input type="number" {...props} />);
+

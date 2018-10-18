@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DateInput from '../common/DateInput';
+import DateInput from '../common/Input';
 
 class WeightManagementPanel extends React.Component {
   constructor(props) {
