@@ -14,6 +14,15 @@ export function fetchThisMonthsWeights() {
     .then(res => res.json());
 }
 
-export function addWeight(weight, date = moment()) {
-
+export function addWeight(date, weight) {
+  return fetch(
+    'http://192.168.0.21:8080/weights',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: JSON.stringify({ date, weight }),
+    },
+  );
 }

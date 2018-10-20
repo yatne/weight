@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 import { DateInput, NumInput } from '../common/Input';
+import { addWeight } from '../../modules/api/weightApi';
 import style from './newWeightSection.scss';
 
 class NewWeightSection extends React.Component {
@@ -23,6 +24,7 @@ class NewWeightSection extends React.Component {
         <form className={style.newWeightForm}>
           <DateInput onChange={value => this.setState({ date: value })} value={date} name="date" />
           <NumInput onChange={value => this.setState({ weight: value })} value={weight} name="weight" />
+          <button onClick={() => addWeight(date, weight)}>Add</button>
         </form>
       </section>
     );
