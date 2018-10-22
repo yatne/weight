@@ -8,6 +8,7 @@ const Input = (props) => {
     name,
     label,
     type,
+    step,
   } = props;
   return (
     <div className="inputContainer">
@@ -20,6 +21,7 @@ const Input = (props) => {
         value={value}
         onChange={event => onChange(event.target.value)}
         className="input"
+        step={step}
       />
     </div>
   );
@@ -32,11 +34,13 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   type: PropTypes.string,
+  step: PropTypes.string,
 };
 
 Input.defaultProps = {
   label: null,
   type: null,
+  step: '',
 };
 
 export const DateInput = props => (<Input type="date" {...props} />);

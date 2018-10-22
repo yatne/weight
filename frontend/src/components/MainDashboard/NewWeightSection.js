@@ -23,7 +23,7 @@ class NewWeightSection extends React.Component {
       <section className={style.newWeightSection}>
         <form className={style.newWeightForm}>
           <DateInput onChange={value => this.setState({ date: value })} value={date} name="date" />
-          <NumInput onChange={value => this.setState({ weight: value })} value={weight} name="weight" />
+          <NumInput onChange={value => this.setState({ weight: value })} value={weight} name="weight" step="0.1" />
           <button onClick={() => addWeight(date, weight)}>Add</button>
         </form>
       </section>
