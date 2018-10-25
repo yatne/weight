@@ -6,7 +6,7 @@
     "serve:build": "npm run build && node server.js",
     "start": "webpack-dev-server --progress --profile --colors",
     "eslint": "eslint ./src",
-    "dev": " webpack-dashboard -- webpack-dev-server"
+    "dev": " webpack-dashboard -- webpack-dev-server --open"
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
