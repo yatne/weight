@@ -3,7 +3,7 @@ import React from 'react';
 import DefaultChartsPanel from './DefaultChartsPanel';
 import NewWeightSection from './NewWeightSection';
 import WeightsTable from './WeightsTable';
-import { fetchWeights } from '../../modules/api/weightApi';
+import { fetchThisMonthsWeights } from '../../modules/api/weightApi';
 
 class MainDashboard extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class MainDashboard extends React.Component {
   }
 
   getThisMonthsDates() {
-    fetchWeights()
+    fetchThisMonthsWeights()
       .then(weights => this.setState({ weights }));
   }
 
@@ -26,7 +26,7 @@ class MainDashboard extends React.Component {
     return (
       <React.Fragment>
         <NewWeightSection />
-        <DefaultChartsPanel />
+        <DefaultChartsPanel weights={this.state.weights} />
         <WeightsTable weights={this.state.weights} />
       </React.Fragment>
     );
