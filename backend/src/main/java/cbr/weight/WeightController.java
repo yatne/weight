@@ -23,7 +23,7 @@ public class WeightController {
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate dateTo
     ) {
-        return weightService.getWieghtsBetweenDates(dateFrom, dateTo);
+        return weightService.getWeightsBetweenDates(dateFrom, dateTo);
     }
 
     @RequestMapping("/weights/{id}")

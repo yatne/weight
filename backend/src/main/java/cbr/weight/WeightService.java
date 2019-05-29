@@ -14,7 +14,7 @@ public class WeightService {
     @Autowired
     private WeightRepository weightRepository;
 
-    public List<Weight> getWieghtsBetweenDates(LocalDate dateFrom, LocalDate dateTo) {
+    public List<Weight> getWeightsBetweenDates(LocalDate dateFrom, LocalDate dateTo) {
         if (dateFrom != null && dateTo != null) {
             return weightRepository.findWeightsBetweenDates(dateFrom, dateTo);
         } else {
