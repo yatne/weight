@@ -4,6 +4,7 @@ import DefaultChartsPanel from './DefaultChartsPanel';
 import NewWeightSection from './NewWeightSection';
 import WeightsTable from './WeightsTable';
 import { fetchThisMonthsWeights } from '../../modules/api/weightApi';
+import style from './mainDashboard.scss';
 
 class MainDashboard extends React.Component {
   constructor(props) {
@@ -24,11 +25,15 @@ class MainDashboard extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <NewWeightSection />
-        <DefaultChartsPanel weights={this.state.weights} />
-        <WeightsTable weights={this.state.weights} />
-      </React.Fragment>
+      <div className={style.dashboard}>
+        <section className={style.leftColumn}>
+          <NewWeightSection />
+          <WeightsTable weights={this.state.weights} />
+        </section>
+        <section className={style.rightColumn}>
+          <DefaultChartsPanel weights={this.state.weights} />
+        </section>
+      </div>
     );
   }
 }
