@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './input.scss';
 
 const Input = (props) => {
   const {
@@ -11,8 +12,8 @@ const Input = (props) => {
     step,
   } = props;
   return (
-    <div className="inputContainer">
-      <div className="inputLabel">
+    <div className={style.inputContainer}>
+      <div className={style.inputLabel}>
         {label || name}
       </div>
       <input
@@ -20,7 +21,7 @@ const Input = (props) => {
         name={name}
         value={value}
         onChange={event => onChange(event.target.value)}
-        className="input"
+        className={style.input}
         step={step}
       />
     </div>
