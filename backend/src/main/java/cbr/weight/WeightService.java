@@ -15,11 +15,13 @@ public class WeightService {
     private WeightRepository weightRepository;
 
     public List<Weight> getWeightsBetweenDates(LocalDate dateFrom, LocalDate dateTo) {
+        List<Weight> weights;
         if (dateFrom != null && dateTo != null) {
-            return weightRepository.findWeightsBetweenDates(dateFrom, dateTo);
+            weights = weightRepository.findWeightsBetweenDates(dateFrom, dateTo);
         } else {
-            return getWeightsFromThisMonth();
+            weights = getWeightsFromThisMonth();
         }
+        return fillMissingWeigths(weights);
     }
 
     private List<Weight> getWeightsFromThisMonth() {
@@ -40,5 +42,17 @@ public class WeightService {
         } else {
             weightRepository.save(weight);
         }
+    }
+
+    private List<Weight> fillMissingWeigths(List<Weight> weights) {
+        LocalDate lastDate = weights.get(0).getDate();
+        for (int i = 0; i < weights.size(); i++) {
+            Weight weight = weights.get(i);
+            if (weight.getDate().isAfter(lastDate.plusDays(1))) {
+                weights.add(i, new Weight(-1, lastDate.plusDays(1), null));
+            }
+            lastDate = weight.getDate();
+        }
+        return weights;
     }
 }
