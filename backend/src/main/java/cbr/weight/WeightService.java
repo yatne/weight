@@ -24,6 +24,10 @@ public class WeightService {
         return fillMissingWeigths(weights);
     }
 
+    public List<Weight> getAllWeights() {
+        return fillMissingWeigths(weightRepository.findAll());
+    }
+
     private List<Weight> getWeightsFromThisMonth() {
         LocalDate firstOfMonth = LocalDate.now().withDayOfMonth(1);
         return weightRepository.findWeightsBetweenDates(firstOfMonth, LocalDate.now());

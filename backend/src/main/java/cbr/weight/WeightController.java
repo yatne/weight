@@ -26,6 +26,11 @@ public class WeightController {
         return weightService.getWeightsBetweenDates(dateFrom, dateTo);
     }
 
+    @RequestMapping("/weights/all")
+    public List<Weight> getAllWeights() {
+        return weightService.getAllWeights();
+    }
+
     @RequestMapping("/weights/{id}")
     public Weight getWeightById(@PathVariable Integer id) {
         return weightService.getWeightById(id);
