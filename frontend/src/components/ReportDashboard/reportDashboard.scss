@@ -1,0 +1,16 @@
+.dashboard {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.leftColumn {
+  min-width: 20%;
+  margin-right: 16px;
+}
+
+.rightColumn {
+  margin-top: 80px;
+  width: calc(80% - 16px);
+  max-width: calc(80% - 16px);
+}

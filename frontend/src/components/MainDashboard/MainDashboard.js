@@ -2,7 +2,7 @@ import React from 'react';
 
 import Chart from '../common/Chart';
 import NewWeightSection from './NewWeightSection';
-import WeightsList from './WeightsList';
+import WeightsList from '../common/WeightsList';
 import { fetchThisMonthsWeights } from '../../modules/api/weightApi';
 import style from './mainDashboard.scss';
 
@@ -14,13 +14,9 @@ class MainDashboard extends React.Component {
     };
   }
 
-  getThisMonthsDates() {
+  componentDidMount() {
     fetchThisMonthsWeights()
       .then(weights => this.setState({ weights }));
-  }
-
-  componentDidMount() {
-    this.getThisMonthsDates();
   }
 
   render() {

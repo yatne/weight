@@ -15,6 +15,11 @@ export function fetchThisMonthsWeights() {
     .then(res => res.json());
 }
 
+export function fetchAllWeights() {
+  return fetch(`http://${properties.backend_url}/weights/all`)
+    .then(res => res.json());
+}
+
 export function addWeight(date, weight) {
   return fetch(
     `http://${properties.backend_url}/weights`,

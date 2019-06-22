@@ -11,5 +11,6 @@
 }
 
 .rightColumn {
+  width: calc(80% - 16px);
   max-width: calc(80% - 16px);
 }
