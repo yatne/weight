@@ -11,7 +11,7 @@ import withCentralLayout from './components/Screen/withCentralLayout';
 const Routes = () => (
   <Router>
     <div>
-      <Route exact path="/report" component={ReportDashboard} />
+      <Route exact path="/report" component={withCentralLayout(ReportDashboard)} />
       <Route exact path="/" component={withCentralLayout(MainDashboard)} />
     </div>
   </Router>

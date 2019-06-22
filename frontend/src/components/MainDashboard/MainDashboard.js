@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DefaultChartsPanel from './DefaultChartsPanel';
+import Chart from '../common/Chart';
 import NewWeightSection from './NewWeightSection';
 import WeightsList from './WeightsList';
 import { fetchThisMonthsWeights } from '../../modules/api/weightApi';
@@ -31,7 +31,7 @@ class MainDashboard extends React.Component {
           <WeightsList weights={this.state.weights} />
         </section>
         <section className={style.rightColumn}>
-          <DefaultChartsPanel weights={this.state.weights} />
+          <Chart weights={this.state.weights} />
         </section>
       </div>
     );

@@ -2,38 +2,31 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
 
-import style from './chart.scss';
-
 const Chart = (props) => {
-  const { labels, data, name } = props;
+  const { weights } = props;
+  const labels = weights.flatMap(weight => weight.date);
+  const data = weights.flatMap(weight => weight.weight);
+
   return (
-    <div className={style.chartContainer}>
-      <Line
-        data={{
-          labels,
-          datasets: [
-            {
-              label: name,
-              data,
-              borderColor: 'rgba(255, 99, 132, 1)',
-              backgroundColor: 'rgba(0, 0, 0, 0)',
-              spanGaps: true,
-            },
-          ],
-        }}
-      />
-    </div>
+    <Line
+      data={{
+        labels,
+        datasets: [
+          {
+            label: 'Grubość',
+            data,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            spanGaps: true,
+          },
+        ],
+      }}
+    />
   );
 };
 
 Chart.propTypes = {
-  labels: PropTypes.array.isRequired,
-  data: PropTypes.array.isRequired,
-  name: PropTypes.string,
-};
-
-Chart.defaultProps = {
-  name: 'Grubość',
+  weights: PropTypes.array.isRequired,
 };
 
 export default Chart;
