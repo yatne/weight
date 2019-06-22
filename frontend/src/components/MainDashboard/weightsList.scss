@@ -36,16 +36,16 @@
   }
 
   &:last-child {
-    padding-bottom: 4px;
+    margin-bottom: 4px;
     border-bottom: 1px solid $borderLight;
   }
 }
 
-
-.datePart {
-
-}
-
-.weightPart {
-
+.expandListItem {
+  padding-top: 4px;
+  margin-top: 4px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 0.9rem;
+  border-top: 1px solid $borderLight;
 }
