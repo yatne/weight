@@ -24,6 +24,10 @@ class CustomSearchSection extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.onSearch(moment().startOf('quarter').format('YYYY-MM-DD'));
+  }
+
   onSearchClicked() {
     const { onSearch } = this.props;
     const { chosenOption, dateFrom, dateTo } = this.state;

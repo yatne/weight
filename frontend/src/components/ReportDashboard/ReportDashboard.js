@@ -25,11 +25,6 @@ class ReportDashboard extends React.Component {
     };
   }
 
-  componentDidMount() {
-    // fetchAllWeights()
-    //   .then(weights => this.setState({ weights }));
-  }
-
   fetchWeights(dateFrom, dateTo, all = false) {
     if (all) {
       fetchAllWeights()
