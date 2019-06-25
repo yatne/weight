@@ -1,9 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
 import { DateInput, NumInput } from '../common/Input';
 import Button from '../common/Button';
-import { addWeight } from '../../modules/api/weightApi';
 import style from './newWeightSection.scss';
 
 class NewWeightSection extends React.Component {
@@ -16,6 +16,7 @@ class NewWeightSection extends React.Component {
   }
 
   render() {
+    const { onSubmit } = this.props;
     const {
       date,
       weight,
@@ -31,11 +32,15 @@ class NewWeightSection extends React.Component {
             label="Waga"
             step="0.1"
           />
-          <Button onClick={() => addWeight(date, weight)}>Dodaj</Button>
+          <Button onClick={() => onSubmit(date, weight)}>Dodaj</Button>
         </form>
       </div>
     );
   }
 }
+
+NewWeightSection.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default NewWeightSection;

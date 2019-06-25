@@ -3,7 +3,7 @@ import React from 'react';
 import Chart from '../common/Chart';
 import NewWeightSection from './NewWeightSection';
 import WeightsList from '../common/WeightsList';
-import { fetchThisMonthsWeights } from '../../modules/api/weightApi';
+import { fetchThisMonthsWeights, addWeight } from '../../modules/api/weightApi';
 import style from './mainDashboard.scss';
 
 class MainDashboard extends React.Component {
@@ -19,11 +19,17 @@ class MainDashboard extends React.Component {
       .then(weights => this.setState({ weights }));
   }
 
+  addNewWeight(date, weight) {
+    addWeight(date, weight)
+      .then(() => fetchThisMonthsWeights())
+      .then(weights => this.setState({ weights }));
+  }
+
   render() {
     return (
       <div className={style.dashboard}>
         <section className={style.leftColumn}>
-          <NewWeightSection />
+          <NewWeightSection onSubmit={(date, weight) => this.addNewWeight(date, weight)} />
           <WeightsList weights={this.state.weights} />
         </section>
         <section className={style.rightColumn}>
