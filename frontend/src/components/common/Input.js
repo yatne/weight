@@ -5,11 +5,8 @@ import style from './input.scss';
 const Input = (props) => {
   const {
     onChange,
-    value,
     name,
     label,
-    type,
-    step,
   } = props;
   return (
     <div className={style.inputContainer}>
@@ -17,12 +14,12 @@ const Input = (props) => {
         {label || name}
       </div>
       <input
-        type={type}
-        name={name}
-        value={value}
-        onChange={event => onChange(event.target.value)}
+        onChange={(event) => {
+          event.preventDefault();
+          onChange(event.target.value);
+        }}
         className={style.input}
-        step={step}
+        {...props}
       />
     </div>
   );

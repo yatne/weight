@@ -2,7 +2,7 @@ import moment from 'moment';
 import fetch from 'isomorphic-fetch';
 import properties from '../../properties';
 
-export function fetchWeights(from, to) {
+export function fetchWeights(from, to = moment().format('YYYY-MM-DD')) {
   return fetch(`http://${properties.backend_url}/weights
 ?dateFrom=${moment(from).format('YYYY-MM-DD')}
 &dateTo=${moment(to).format('YYYY-MM-DD')}

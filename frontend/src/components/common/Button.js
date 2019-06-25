@@ -11,7 +11,10 @@ const Button = (props) => {
   return (
     <button
       className={style.button}
-      onClick={() => onClick()}
+      onClick={(event) => {
+        event.preventDefault();
+        onClick();
+      }}
     >
       {children}
     </button>
@@ -20,7 +23,7 @@ const Button = (props) => {
 
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export default Button;

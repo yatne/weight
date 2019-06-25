@@ -3,7 +3,7 @@ import React from 'react';
 import Chart from '../common/Chart';
 import CustomSearchSection from './CustomSearchSection';
 import WeightsList from '../common/WeightsList';
-import { fetchAllWeights } from '../../modules/api/weightApi';
+import { fetchAllWeights, fetchWeights } from '../../modules/api/weightApi';
 import style from './reportDashboard.scss';
 
 const chartOptions = {
@@ -26,15 +26,25 @@ class ReportDashboard extends React.Component {
   }
 
   componentDidMount() {
-    fetchAllWeights()
-      .then(weights => this.setState({ weights }));
+    // fetchAllWeights()
+    //   .then(weights => this.setState({ weights }));
+  }
+
+  fetchWeights(dateFrom, dateTo, all = false) {
+    if (all) {
+      fetchAllWeights()
+        .then(weights => this.setState({ weights }));
+    } else {
+      fetchWeights(dateFrom, dateTo)
+        .then(weights => this.setState({ weights }));
+    }
   }
 
   render() {
     return (
       <div className={style.dashboard}>
         <section className={style.leftColumn}>
-          <CustomSearchSection />
+          <CustomSearchSection onSearch={(dateFrom, dateTo, all) => this.fetchWeights(dateFrom, dateTo, all)} />
           <WeightsList weights={this.state.weights} />
         </section>
         <section className={style.rightColumn}>
