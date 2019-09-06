@@ -49,13 +49,15 @@ public class WeightService {
     }
 
     private List<Weight> fillMissingWeigths(List<Weight> weights) {
-        LocalDate lastDate = weights.get(0).getDate();
-        for (int i = 0; i < weights.size(); i++) {
-            Weight weight = weights.get(i);
-            if (weight.getDate().isAfter(lastDate.plusDays(1))) {
-                weights.add(i, new Weight(-1, lastDate.plusDays(1), null));
+        if (weights.size() > 0) {
+            LocalDate lastDate = weights.get(0).getDate();
+            for (int i = 0; i < weights.size(); i++) {
+                Weight weight = weights.get(i);
+                if (weight.getDate().isAfter(lastDate.plusDays(1))) {
+                    weights.add(i, new Weight(-1, lastDate.plusDays(1), null));
+                }
+                lastDate = weight.getDate();
             }
-            lastDate = weight.getDate();
         }
         return weights;
     }
