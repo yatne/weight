@@ -37,7 +37,10 @@ public class WeightController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/weights")
-    public void addOrReplaceWeight(@RequestBody Weight weight) {
-        weightService.addOrReplaceWeight(weight);
+    public void addOrReplaceWeight(
+            @RequestBody Weight weight,
+            @RequestHeader("Authorization") String password
+    ) {
+        weightService.addOrReplaceWeight(weight, password);
     }
 }

@@ -1,5 +1,6 @@
 package cbr.weight;
 
+import cbr.password.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,8 @@ public class WeightService {
 
     @Autowired
     private WeightRepository weightRepository;
+    @Autowired
+    private PasswordService passwordService;
 
     public List<Weight> getWeightsBetweenDates(LocalDate dateFrom, LocalDate dateTo) {
         List<Weight> weights;
@@ -39,12 +42,14 @@ public class WeightService {
     }
 
     @Transactional
-    public void addOrReplaceWeight(Weight weight) {
-        Weight existingWeight =  weightRepository.findByDate(weight.getDate());
-        if (existingWeight != null) {
-            weightRepository.updateWeightByDate(weight.getDate(), weight.getWeight());
-        } else {
-            weightRepository.save(weight);
+    public void addOrReplaceWeight(Weight weight, String password) {
+        if (passwordService.checkPassword(password)) {
+            Weight existingWeight = weightRepository.findByDate(weight.getDate());
+            if (existingWeight != null) {
+                weightRepository.updateWeightByDate(weight.getDate(), weight.getWeight());
+            } else {
+                weightRepository.save(weight);
+            }
         }
     }
 
