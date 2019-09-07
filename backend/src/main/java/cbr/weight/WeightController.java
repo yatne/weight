@@ -1,7 +1,9 @@
 package cbr.weight;
 
+import cbr.password.WrongPasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -37,10 +39,14 @@ public class WeightController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/weights")
-    public void addOrReplaceWeight(
+    public void addOrReplaceWeight (
             @RequestBody Weight weight,
             @RequestHeader("Authorization") String password
     ) {
-        weightService.addOrReplaceWeight(weight, password);
+        try {
+            weightService.addOrReplaceWeight(weight, password);
+        } catch (RuntimeException e) {
+            throw new WrongPasswordException();
+        }
     }
 }

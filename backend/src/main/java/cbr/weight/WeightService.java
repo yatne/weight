@@ -1,6 +1,7 @@
 package cbr.weight;
 
 import cbr.password.PasswordService;
+import cbr.password.WrongPasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,11 +25,11 @@ public class WeightService {
         } else {
             weights = getWeightsFromThisMonth();
         }
-        return fillMissingWeigths(weights);
+        return fillMissingWeights(weights);
     }
 
     public List<Weight> getAllWeights() {
-        return fillMissingWeigths(weightRepository.findAll());
+        return fillMissingWeights(weightRepository.findAll());
     }
 
     private List<Weight> getWeightsFromThisMonth() {
@@ -50,10 +51,12 @@ public class WeightService {
             } else {
                 weightRepository.save(weight);
             }
+        } else {
+            throw new WrongPasswordException();
         }
     }
 
-    private List<Weight> fillMissingWeigths(List<Weight> weights) {
+    private List<Weight> fillMissingWeights(List<Weight> weights) {
         if (weights.size() > 0) {
             LocalDate lastDate = weights.get(0).getDate();
             for (int i = 0; i < weights.size(); i++) {
