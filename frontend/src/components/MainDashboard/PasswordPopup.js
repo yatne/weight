@@ -23,11 +23,18 @@ class PasswordPopup extends React.Component {
   render() {
     return (
       <div className={style.blende}>
-        <form onSubmit={e => this.submitPassword(e)}>
-          <span>Podaj hasło</span>
-          <input type="password" value={this.state.password} onChange={e => this.changePassword(e)} />
-          <button type="submit"> OK </button>
-        </form>
+        <div className={style.popup}>
+          <form onSubmit={e => this.submitPassword(e)}>
+            <span>Podaj hasło: </span>
+            <input
+              className={style.input}
+              type="password"
+              value={this.state.password}
+              onChange={e => this.changePassword(e)}
+            />
+            <button type="submit"> OK </button>
+          </form>
+        </div>
       </div>
     );
   }
