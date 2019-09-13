@@ -1,5 +1,3 @@
-
-
 const webpack = require('webpack');
 const path = require('path');
 const loadersConf = require('./webpack.loaders');
@@ -9,13 +7,20 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
+    // POLYFILL: Set up an ES6-ish environment
+    // 'babel-polyfill',  // The entire babel-polyfill
+    // Or pick es6 features needed (included into babel-polyfill)
+    'core-js/fn/promise',
+    'core-js/es6/object',
+    'core-js/es6/array',
+
     './src/index.js',
     './src/styles/main.scss',
   ],
   output: {
-    publicPath: './',
+    publicPath: '/',
     path: path.join(__dirname, 'public'),
-    filename: '[chunkhash].js',
+    filename: 'bundle.js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],

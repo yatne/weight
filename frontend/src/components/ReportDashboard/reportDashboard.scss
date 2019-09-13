@@ -14,3 +14,19 @@
   width: calc(80% - 16px);
   max-width: calc(80% - 16px);
 }
+
+@media screen and (max-width: 600px) {
+  .dashboard {
+    margin-top: 16px;
+    flex-direction: column-reverse;
+  }
+
+  .rightColumn {
+    width: 100vw;
+    margin: 0;
+  }
+
+  .leftColumn {
+    margin: 0;
+  }
+}
