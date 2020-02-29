@@ -11,6 +11,8 @@ import java.util.List;
 public interface WeightRepository extends JpaRepository<Weight, Integer> {
 
     public Weight findByDate(LocalDate date);
+
+    @Query("Select w from Weight w order by date")
     public List<Weight> findAllOrderByDateAsc();
 
     @Modifying
