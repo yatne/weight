@@ -12,6 +12,9 @@ public interface WeightRepository extends JpaRepository<Weight, Integer> {
 
     public Weight findByDate(LocalDate date);
 
+    @Query("Select w from Weight w order by date")
+    public List<Weight> findAllOrderByDateAsc();
+
     @Modifying
     @Query("update Weight w set w.weight = :newWeight where w.date = :date")
     public void updateWeightByDate( @Param("date") LocalDate date, @Param("newWeight") Float newWeight);

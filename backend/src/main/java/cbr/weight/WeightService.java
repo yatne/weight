@@ -29,7 +29,7 @@ public class WeightService {
     }
 
     public List<Weight> getAllWeights() {
-        return fillMissingWeights(weightRepository.findAll());
+        return fillMissingWeights(weightRepository.findAllOrderByDateAsc());
     }
 
     private List<Weight> getWeightsFromThisMonth() {

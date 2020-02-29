@@ -1,0 +1,1 @@
+to deploy run `mvn appengine:deploy`
