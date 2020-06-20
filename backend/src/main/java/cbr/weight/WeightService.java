@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,16 +58,20 @@ public class WeightService {
     }
 
     private List<Weight> fillMissingWeights(List<Weight> weights) {
+        List<Weight> weightsWithAllDates = new ArrayList<>();
         if (weights.size() > 0) {
             LocalDate lastDate = weights.get(0).getDate();
             for (int i = 0; i < weights.size(); i++) {
                 Weight weight = weights.get(i);
-                if (weight.getDate().isAfter(lastDate.plusDays(1))) {
-                    weights.add(i, new Weight(-1, lastDate.plusDays(1), null));
+                weightsWithAllDates.add(weight);
+                while (weight.getDate().isAfter(lastDate.plusDays(1))) {
+                    Weight nullWeight = new Weight(-1, lastDate.plusDays(1), null);
+                    weightsWithAllDates.add(i, nullWeight);
+                    lastDate = nullWeight.getDate();
                 }
-                lastDate = weight.getDate();
+                lastDate = weightsWithAllDates.get(weightsWithAllDates.size()-1).getDate();
             }
         }
-        return weights;
+        return weightsWithAllDates;
     }
 }
