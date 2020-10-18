@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class WeightService {
@@ -58,20 +56,34 @@ public class WeightService {
     }
 
     private List<Weight> fillMissingWeights(List<Weight> weights) {
-        List<Weight> weightsWithAllDates = new ArrayList<>();
         if (weights.size() > 0) {
             LocalDate lastDate = weights.get(0).getDate();
+            ArrayList<Weight> missingWeights = new ArrayList<Weight>();
             for (int i = 0; i < weights.size(); i++) {
                 Weight weight = weights.get(i);
-                weightsWithAllDates.add(weight);
-                while (weight.getDate().isAfter(lastDate.plusDays(1))) {
-                    Weight nullWeight = new Weight(-1, lastDate.plusDays(1), null);
-                    weightsWithAllDates.add(i, nullWeight);
-                    lastDate = nullWeight.getDate();
+                if (weight.getDate().isAfter(lastDate.plusDays(1))) {
+                    LocalDate missingDate = lastDate.plusDays(1);
+                    Weight missingWeight = new Weight(-1, missingDate, null);
+                    missingWeights.add(missingWeight);;
+                    while( weight.getDate().isAfter(missingDate.plusDays(1))) {
+                        missingDate = missingDate.plusDays(1);
+                        missingWeight = new Weight(-1, missingDate, null);
+                        missingWeights.add(missingWeight);;
+                    }
                 }
-                lastDate = weightsWithAllDates.get(weightsWithAllDates.size()-1).getDate();
+                lastDate = weight.getDate();
             }
+            weights.addAll(missingWeights);
         }
-        return weightsWithAllDates;
+        Collections.sort(weights, new Comparator<Weight>() {
+            @Override
+            public int compare(Weight o1, Weight o2) {
+                if (o1.getDate().isBefore(o2.getDate())) {
+                    return -1;
+                }
+                return 1;
+            }
+        });
+        return weights;
     }
 }
