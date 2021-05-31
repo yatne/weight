@@ -9,7 +9,7 @@ import MainDashboard from './components/MainDashboard/MainDashboard';
 import withCentralLayout from './components/Screen/withCentralLayout';
 
 const Routes = () => (
-  <Router>
+  <Router basename="/weights">
     <div>
       <Route exact path="/report" component={withCentralLayout(ReportDashboard)} />
       <Route exact path="/" component={withCentralLayout(MainDashboard)} />
