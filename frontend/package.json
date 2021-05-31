@@ -1,7 +1,7 @@
 {
   "name": "weight",
   "version": "1.0.0-SNAPSHOT",
-  "homepage": "https://yatne.github.io/weight/",
+  "homepage": "https://yatne.github.io/weight",
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
     "serve:build": "npm run build && node server.js",
